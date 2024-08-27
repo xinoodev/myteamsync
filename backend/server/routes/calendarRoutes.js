@@ -3,6 +3,6 @@ const { createCalendar, getCalendars } = require('../controllers/calendarControl
 const router = express.Router();
 
 router.post('/calendars', createCalendar);
-router.get('/calendars', getCalendars);
+router.get('/calendars/:owner_id', getCalendars);
 
 module.exports = router;

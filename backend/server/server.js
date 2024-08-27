@@ -6,6 +6,7 @@ const helmet = require('helmet');
 // Routes imports:
 const authRoutes = require('./routes/authRoutes');
 const calendarRoutes = require('./routes/calendarRoutes');
+const eventRoutes = require('./routes/eventRoutes');
 
 const app = express();
 app.use(helmet());
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 // Calendar routes
 app.use('/api', calendarRoutes);
+// Events routes
+app.use('/api', eventRoutes);
 
 const port = process.env.SERVER_PORT || 1202;
 app.listen(port, () => {
