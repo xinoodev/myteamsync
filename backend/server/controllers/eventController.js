@@ -21,7 +21,7 @@ const updateEvent = async (req, res) => {
         [title, description, start_time, end_time, id]
     );
 
-    if (result.rowCount === 0) {
+    if (result.rows.length === 0) {
         return res.status(404).json({ error: 'Event not found.' });
     }
 
@@ -32,7 +32,7 @@ const deleteEvent = async (req, res) => {
     const { id } = req.params;
     const result = await db.query('DELETE FROM events WHERE id = $1 RETURNING *', [id]);
 
-    if (result.rowCount === 0) {
+    if (result.rows.length === 0) {
         return res.status(404).json({ error: 'Event not found.' });
     }
 
